@@ -3,8 +3,6 @@ package br.com.zup.transacao.trasacao.DTO;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import javax.persistence.Id;
-
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 
@@ -12,7 +10,7 @@ import br.com.zup.transacao.cartao.Cartao;
 import br.com.zup.transacao.estabelecimento.Estabelecimento;
 import br.com.zup.transacao.trasacao.Transacao;
 
-public class TransacaoDTO {
+public class TransacaoRequest {
 	
 	private String id;
 	
@@ -25,14 +23,14 @@ public class TransacaoDTO {
 	private Cartao cartao;
 	
 	@Deprecated
-	public TransacaoDTO() {
+	public TransacaoRequest() {
 		
 	}
 	
 	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
 	private LocalDateTime efetivadaEm;
 
-	public TransacaoDTO(String id, BigDecimal valor, Estabelecimento estabelecimento, Cartao cartao,
+	public TransacaoRequest(String id, BigDecimal valor, Estabelecimento estabelecimento, Cartao cartao,
 			LocalDateTime efetivadaEm) {
 		super();
 		this.id = id;

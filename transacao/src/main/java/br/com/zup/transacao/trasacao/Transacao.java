@@ -3,6 +3,7 @@ package br.com.zup.transacao.trasacao;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -21,10 +22,10 @@ public class Transacao {
 	
 	private BigDecimal valor;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Estabelecimento estabelecimento;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Cartao cartao;
 	
 	@Deprecated
@@ -49,6 +50,26 @@ public class Transacao {
 	public String toString() {
 		return "Transacao [id=" + id + ", valor=" + valor + ", estabelecimento=" + estabelecimento + ", cartao="
 				+ cartao + ", efetivadaEm=" + efetivadaEm + "]";
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public Estabelecimento getEstabelecimento() {
+		return estabelecimento;
+	}
+
+	public Cartao getCartao() {
+		return cartao;
+	}
+
+	public LocalDateTime getEfetivadaEm() {
+		return efetivadaEm;
 	}
 	
 	
